@@ -1,16 +1,15 @@
 import { Link } from "react-router-dom"
 
 
-function Card(){
+function Card({book}){
     return(
-<Link to="/single-page">
+<Link to={`/single-page/${book.id}`}>
     <div className="flex px-3 py-3">
     <div className="max-w-sm rounded overflow-hidden shadow-lg">
         <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
+        <div className="font-bold text-xl mb-2">{book.bookName}</div>
         <p className="text-gray-700 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-            perferendis eaque, exercitationem praesentium nihil.
+          {book.bookAuthor}
         </p>
         </div>
         <div className="px-6 py-4">
