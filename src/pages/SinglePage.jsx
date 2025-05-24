@@ -1,8 +1,9 @@
 
-import {  useNavigate, useParams } from "react-router-dom"
+import {  Link, useNavigate, useParams } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Button from "../components/Button"
 
 
 function SinglePage(){
@@ -10,7 +11,7 @@ function SinglePage(){
     const {id} = useParams() // used to get the parameter of route ..
     const [book,setBook] = useState({})
     const fetchBook = async ()=>{
-       const response = await axios.get("http://localhost:4000/api/books/" + id)
+       const response = await axios.get("http://localhost:3000/api/books/" + id)
        setBook(response.data.datas)// response.data.hello
     }
     useEffect(()=>{
@@ -34,6 +35,8 @@ function SinglePage(){
         <p>{book.price}</p>
         <p>{book.bookAuthor}</p>
         <button onClick={deleteBook}>Delete Me</button>
+        <Link to={`/edit-page/${book.id}`}><button>Edit Me</button></Link>
+        
         </>
     )
 }
